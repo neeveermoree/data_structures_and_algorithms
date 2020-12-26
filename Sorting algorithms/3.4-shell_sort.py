@@ -2,15 +2,15 @@ def shell_sort(arr):
     length = len(arr)
     gap = length // 2
     while gap > 0:
-        i = 0
-        while i < length-gap:
-            # if arr[i] > arr[i+gap]:
-            #     arr[i], arr[i+gap] = arr[i+gap], arr[i]
-            j = i + gap
-            while j > 0 and arr[j-gap] > arr[j]:
-                arr[j-gap], arr[j] = arr[j], arr[j-gap]
+        i = gap
+        while i < length:
+            tmp = arr[i]
+            j = i
+            while j > 0 and arr[j-gap] > tmp:
+                arr[j] = arr[j-gap]
                 j -= gap
-            i += 1 
+            arr[j] = tmp
+            i += 1
         gap = gap // 2
     return arr
 
