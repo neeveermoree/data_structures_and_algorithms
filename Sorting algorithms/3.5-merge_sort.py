@@ -31,8 +31,49 @@ def merge(arr1, arr2):
     return merged_arr
 
 
+def merge_sort_inplace(arr, left, right):
+    if (right - left) != 1:
+        middle = (left + right + 1) // 2
+        merge_sort_inplace(arr, left, middle)
+        merge_sort_inplace(arr, middle, right)
+        sort_inplace(arr, left, middle, right)
+
+
+def sort_inplace(arr, left, middle, right):
+    total_length = right - left
+    tmp_arr = [0] * len(arr)
+
+    idx1 = left
+    idx2 = middle
+    tmp_idx = left
+
+    while idx1 < middle and idx2 < right:
+        if arr[idx1] <= arr[idx2]:
+            tmp_arr[tmp_idx] = arr[idx1]
+            idx1 += 1
+        else:
+            tmp_arr[tmp_idx] = arr[idx2]
+            idx2 += 1
+        tmp_idx += 1
+
+    while idx1 < middle:
+        tmp_arr[tmp_idx] = arr[idx1]
+        idx1 += 1
+        tmp_idx += 1
+    
+    while idx2 < right:
+        tmp_arr[tmp_idx] = arr[idx2]
+        idx2 += 1
+        tmp_idx += 1
+    
+    for i in range(left, right):
+        arr[i] = tmp_arr[i]
+
+
 a = [1, 9, -1, -2, 0, 1, 5, 3, 2, 7]
 print(merge_sort(a))
+merge_sort_inplace(a, 0, len(a))
+print(a)
 
                             #                                                 1 9 -1 -2 0 1 5 3 2 7
                             #                                 1a) 1 9 -1 -2 0                      1b) 1 5 3 2 7
