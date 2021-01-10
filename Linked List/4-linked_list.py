@@ -50,6 +50,16 @@ class LinkedList:
             else:
                 print(' -> ', end='')
             head = head._next_node
+    
+    def search(self, val):
+        node_idx = 0
+        head = self._head
+        while head:
+            if head._val == val:
+                return node_idx
+            node_idx += 1
+            head = head._next_node
+        return -1
 
 
 ll = LinkedList()
@@ -61,3 +71,5 @@ ll.display()
 ll.add_node(123)
 ll.add_node(1234)
 ll.display()
+print(ll.search(123))
+print(ll.search(234))
