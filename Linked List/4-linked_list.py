@@ -20,7 +20,7 @@ class LinkedList:
     def is_empty(self):
         return len(self) == 0
     
-    def add_node(self, val):
+    def add_node_end(self, val):
         new_node = _Node(val)
         # with self._head only
         """
@@ -61,15 +61,27 @@ class LinkedList:
             head = head._next_node
         return -1
 
+    def add_node_start(self, val):
+        new_node = _Node(val)
+        if self.is_empty(): 
+            self._head = new_node
+            self._tail = new_node
+        else:
+            new_node._next_node = self._head
+            self._head = new_node
+        self._length += 1
+
 
 ll = LinkedList()
 print(ll.is_empty())
 ll.display()
-ll.add_node(12)
+ll.add_node_start(12)
 print(ll.is_empty())
 ll.display()
-ll.add_node(123)
-ll.add_node(1234)
+ll.add_node_end(123)
+ll.add_node_end(1234)
 ll.display()
 print(ll.search(123))
 print(ll.search(234))
+ll.add_node_start(1)
+ll.display()
