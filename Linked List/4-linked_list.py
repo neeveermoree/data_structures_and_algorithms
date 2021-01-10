@@ -8,6 +8,7 @@ class _Node:
 
 class LinkedList:
     __slots__ = ('_head', '_tail', '_length')
+    
     def __init__(self):
         self._head = None
         self._tail = None
