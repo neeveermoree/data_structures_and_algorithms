@@ -71,6 +71,16 @@ class LinkedList:
             self._head = new_node
         self._length += 1
 
+    def add_node_position(self, val, idx):
+        node_idx = 1
+        head = self._head
+        while node_idx < idx:
+            node_idx += 1
+            head = head._next_node
+        new_node = _Node(val, head._next_node)
+        head._next_node = new_node
+        self._length += 1    
+
 
 ll = LinkedList()
 print(ll.is_empty())
@@ -84,4 +94,6 @@ ll.display()
 print(ll.search(123))
 print(ll.search(234))
 ll.add_node_start(1)
+ll.display()
+ll.add_node_position(42, 2)
 ll.display()
