@@ -81,6 +81,11 @@ class LinkedList:
         head._next_node = new_node
         self._length += 1    
 
+    def delete_first(self):
+        head = self._head
+        self._head = head._next_node
+        self._length -= 1
+
 
 ll = LinkedList()
 print(ll.is_empty())
@@ -96,4 +101,6 @@ print(ll.search(234))
 ll.add_node_start(1)
 ll.display()
 ll.add_node_position(42, 2)
+ll.display()
+ll.delete_first()
 ll.display()
