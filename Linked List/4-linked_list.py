@@ -89,6 +89,19 @@ class LinkedList:
         self._length -= 1
         return head._next_node
 
+    def delete_last(self):
+        previous = self._head
+        if not previous:
+            return None
+        head = previous._next_node 
+        while head._next_node:
+            previous = head
+            head = head._next_node 
+        previous._next_node = None
+        self._length -= 1
+        self._tail = previous
+        return head._val
+
 
 ll = LinkedList()
 print(ll.is_empty())
@@ -106,4 +119,6 @@ ll.display()
 ll.add_node_position(42, 2)
 ll.display()
 ll.delete_first()
+ll.display()
+print(ll.delete_last())
 ll.display()
