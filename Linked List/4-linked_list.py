@@ -82,9 +82,12 @@ class LinkedList:
         self._length += 1    
 
     def delete_first(self):
+        if len(self) == 0:
+            return None
         head = self._head
         self._head = head._next_node
         self._length -= 1
+        return head._next_node
 
 
 ll = LinkedList()
