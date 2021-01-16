@@ -101,6 +101,19 @@ class LinkedList:
         self._length -= 1
         self._tail = previous
         return head._val
+    
+    def delete_position(self, idx):
+        if len(self) == 0:
+            return None
+        previous = self._head
+        head = previous._next_node
+        i = 0
+        while i < (idx - 1):
+            previous = head
+            head = head._next_node
+        previous._next_node = head._next_node
+        self._length -= 1
+        return head._val
 
 
 ll = LinkedList()
@@ -121,4 +134,8 @@ ll.display()
 ll.delete_first()
 ll.display()
 print(ll.delete_last())
+ll.display()
+ll.add_node_end(13)
+ll.display()
+print(ll.delete_position(1))
 ll.display()
