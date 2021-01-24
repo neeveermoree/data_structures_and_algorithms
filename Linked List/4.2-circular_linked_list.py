@@ -37,6 +37,16 @@ class CircularLinkedList:
             cur_node = cur_node._next_node
         print()
 
+    def search(self, val):
+        cur_node = self._head
+        idx = 0
+        while idx < len(self):
+            if cur_node._val == val:
+                return idx
+            cur_node = cur_node._next_node
+            idx += 1
+        return -1
+
 
 cll = CircularLinkedList()
 cll.display()
@@ -48,3 +58,5 @@ print(len(cll))
 cll.display()
 cll.add_last(12)
 cll.display()
+print(cll.search(5))
+print(cll.search(8))
