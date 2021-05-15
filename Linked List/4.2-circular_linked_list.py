@@ -59,6 +59,17 @@ class CircularLinkedList:
         cur_node._next_node = node
         self._head = node
         self._length += 1
+    
+    def add_node_position(self, val, idx):
+        node = _Node(val) 
+        counter = 0
+        cur_node = self._head
+        while counter + 1 != idx:
+            cur_node = cur_node._next_node
+            counter += 1
+        node._next_node = cur_node._next_node
+        cur_node._next_node = node
+        self._length += 1
 
 
 cll = CircularLinkedList()
@@ -80,3 +91,7 @@ cll.display()
 cll2 = CircularLinkedList()
 cll2.add_first(0)
 cll2.display()
+cll.add_node_position(3, 2)
+cll.display()
+cll.add_node_position(2, 8)
+cll.display()
