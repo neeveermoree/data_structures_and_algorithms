@@ -46,6 +46,19 @@ class CircularLinkedList:
             cur_node = cur_node._next_node
             idx += 1
         return -1
+    
+    def add_first(self, val):
+        node = _Node(val)
+        if not len(self):
+            node._next_node = node
+            self._head = node
+        cur_node = self._head
+        while cur_node._next_node != self._head:
+            cur_node = cur_node._next_node
+        node._next_node = self._head
+        cur_node._next_node = node
+        self._head = node
+        self._length += 1
 
 
 cll = CircularLinkedList()
@@ -60,3 +73,10 @@ cll.add_last(12)
 cll.display()
 print(cll.search(5))
 print(cll.search(8))
+cll.add_first(2)
+cll.display()
+cll.add_first(5)
+cll.display()
+cll2 = CircularLinkedList()
+cll2.add_first(0)
+cll2.display()
