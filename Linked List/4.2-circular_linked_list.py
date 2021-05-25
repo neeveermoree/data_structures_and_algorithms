@@ -72,11 +72,18 @@ class CircularLinkedList:
         self._length += 1
     
     def delete_from_beginning(self):
-        cur_value = self._head
-        while cur_value._next_node != self._head:
-            cur_value = cur_value._next_node
-        cur_value._next_node = self._head._next_node
-        self._head = cur_value._next_node
+        cur_node = self._head
+        while cur_node._next_node != self._head:
+            cur_node = cur_node._next_node
+        cur_node._next_node = self._head._next_node
+        self._head = cur_node._next_node
+        self._length -= 1
+    
+    def delete_from_end(self):
+        curr_node = self._head
+        while curr_node._next_node._next_node != self._head:
+            curr_node = curr_node._next_node
+        curr_node._next_node = self._head
         self._length -= 1
 
 
@@ -105,3 +112,7 @@ cll.add_node_position(2, 8)
 cll.display()
 cll2.delete_from_beginning()
 cll2.display()
+cll.delete_from_beginning()
+cll.display()
+cll.delete_from_end()
+cll.display()
