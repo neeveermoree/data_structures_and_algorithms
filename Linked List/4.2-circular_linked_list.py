@@ -86,6 +86,16 @@ class CircularLinkedList:
         curr_node._next_node = self._head
         self._length -= 1
 
+    def delete_at_idx(self, idx):
+        node_id = 0
+        curr_node = self._head
+        while node_id != (idx - 1):
+            node_id += 1
+            curr_node = curr_node._next_node
+        next_item = curr_node._next_node._next_node
+        curr_node._next_node = next_item
+        self._length -= 1
+
 
 cll = CircularLinkedList()
 cll.display()
@@ -115,4 +125,8 @@ cll2.display()
 cll.delete_from_beginning()
 cll.display()
 cll.delete_from_end()
+cll.display()
+cll.delete_at_idx(1)
+cll.display()
+cll.delete_at_idx(2)
 cll.display()
