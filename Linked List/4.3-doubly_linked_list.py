@@ -39,6 +39,7 @@ class DoublyLinkedList:
         self._head._previous_node = node
         node._previous_node = self._tail
         node._next_node = self._head
+        self._tail = node
         self._length += 1
 
 
@@ -50,3 +51,6 @@ dll.add_last(1)
 dll.display()
 dll.add_last(2)
 dll.display()
+dll.add_last(3)
+dll.display()
+print(len(dll))
