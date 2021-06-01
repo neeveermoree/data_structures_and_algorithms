@@ -59,6 +59,9 @@ class DoublyLinkedList:
     
     def add_first(self, val):
         node = _Node(val)
+        if not len(self):
+            self._head = node
+            self._tail = self._head
         self._head._previous_node = node
         self._tail._next_node = node
         node._previous_node = self._tail
@@ -82,3 +85,7 @@ dll.display_reverse()
 dll.add_first(4)
 dll.display()
 dll.display_reverse()
+dll2 = DoublyLinkedList()
+dll2.add_first(999)
+dll2.display()
+print(len(dll2))
