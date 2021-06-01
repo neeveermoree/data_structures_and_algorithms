@@ -68,6 +68,58 @@ class DoublyLinkedList:
         node._next_node = self._head
         self._head = node
         self._length += 1
+    
+    def add_node_position(self, val, idx):
+        node = _Node(val)
+        if not len(self):
+            self._head = node
+            self._tail = self._head
+        node_idx = 0
+        cur_node = self._head
+        while node_idx < idx:
+            node_idx += 1
+            cur_node = cur_node._next_node
+        prev_node = cur_node._previous_node
+        prev_node._next_node = node
+        cur_node._previous_node = node
+        node._previous_node = prev_node
+        node._next_node = cur_node
+        self._length += 1
+    
+    def delete_first(self):
+        if not len(self):
+            print("Doubly Linked List is empty")
+            return None
+        new_head = self._head._next_node
+        new_head._previous_node = self._tail
+        self._tail._next_node = new_head
+        self._head = new_head
+        self._length -= 1
+    
+    def delete_last(self):
+        if not len(self):
+            print("Doubly Linked List is empty")
+            return None
+        new_tail = self._tail._previous_node
+        new_tail._next_node = self._head
+        self._head._previous_node = new_tail
+        self._tail = new_tail
+        self._length -= 1
+    
+    def delete_idx(self, idx):
+        if not len(self):
+            print("Doubly Linked List is empty")
+            return None
+        node_idx = 0
+        cur_node = self._head
+        while node_idx < idx:
+            cur_node = cur_node._next_node
+            node_idx += 1
+        prev_node = cur_node._previous_node
+        next_node = cur_node._next_node
+        next_node._previous_node = prev_node
+        prev_node._next_node = next_node
+        self._length -= 1
 
 
 node = _Node(0)
@@ -89,3 +141,19 @@ dll2 = DoublyLinkedList()
 dll2.add_first(999)
 dll2.display()
 print(len(dll2))
+dll.add_node_position(5, 2)
+dll.display()
+dll.display_reverse()
+dll.delete_first()
+dll.display()
+dll.display_reverse()
+dll2.delete_first()
+dll2.display()
+dll2.delete_first()
+dll.display()
+dll.delete_last()
+dll.display()
+dll.display_reverse()
+dll.delete_idx(1)
+dll.display()
+dll.display_reverse()
