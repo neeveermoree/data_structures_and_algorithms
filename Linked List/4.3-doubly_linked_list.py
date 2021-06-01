@@ -6,6 +6,7 @@ class _Node:
         self._previous_node = previous_node
 
 
+# Circular
 class DoublyLinkedList:
     __slots__ = ('_length', '_head', '_tail')
     def __init__(self):
@@ -27,6 +28,20 @@ class DoublyLinkedList:
         cur_node = self._head
         while cur_node._next_node != self._head:
             cur_node = cur_node._next_node
+            s += f'{cur_node._val} -> '
+        print(s)
+    
+    def display_reverse(self):
+        if not len(self):
+            print("Doubly Linked List is empty")
+            return None
+        elif len(self) == 1:
+            print(f'{self._tail._val} -> ')
+            return None
+        s = f'{self._tail._val} -> '
+        cur_node = self._tail
+        while cur_node._previous_node != self._tail:
+            cur_node = cur_node._previous_node
             s += f'{cur_node._val} -> '
         print(s)
     
@@ -54,3 +69,4 @@ dll.display()
 dll.add_last(3)
 dll.display()
 print(len(dll))
+dll.display_reverse()
