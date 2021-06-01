@@ -56,6 +56,15 @@ class DoublyLinkedList:
         node._next_node = self._head
         self._tail = node
         self._length += 1
+    
+    def add_first(self, val):
+        node = _Node(val)
+        self._head._previous_node = node
+        self._tail._next_node = node
+        node._previous_node = self._tail
+        node._next_node = self._head
+        self._head = node
+        self._length += 1
 
 
 node = _Node(0)
@@ -69,4 +78,7 @@ dll.display()
 dll.add_last(3)
 dll.display()
 print(len(dll))
+dll.display_reverse()
+dll.add_first(4)
+dll.display()
 dll.display_reverse()
