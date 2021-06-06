@@ -4,6 +4,7 @@ class _Node:
         self._val = val
         self._next_node = next
 
+
 class Stack:
     __slots__ = '_length', '_top_node'
     def __init__(self):
