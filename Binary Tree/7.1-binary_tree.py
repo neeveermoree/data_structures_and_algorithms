@@ -1,3 +1,6 @@
+from utils_queue import Queue
+
+
 class _Node:
     __slots__ = '_val', '_left', '_right'
     def __init__(self, val, left=None, right=None):
@@ -40,6 +43,17 @@ class BinaryTree:
             new_node_list.append(node._left)
             new_node_list.append(node._right)
         self.levelorder_traversal(new_node_list)
+    
+    def levelorder_traversal_queue(self):
+        queue = Queue()
+        if self._root:
+            queue.enqueue(self._root)
+        while not queue.is_empty():
+            node = queue.dequeue()
+            if node:
+                print(node._val, end=' ')
+                queue.enqueue(node._left)
+                queue.enqueue(node._right)
 
 
 """
@@ -72,6 +86,8 @@ print('\nPostorder traversal')
 bt.postorder_traversal(bt._root)
 print('\nLevelorder traversal')
 bt.levelorder_traversal([bt._root])
+print('\nLevelorder traversal queue')
+bt.levelorder_traversal_queue()
 
 
 """
@@ -101,3 +117,5 @@ print('\nPostorder traversal')
 bt_.postorder_traversal(bt_._root)
 print('\nLevelorder traversal')
 bt_.levelorder_traversal([bt_._root])
+print('\nLevelorder traversal queue')
+bt_.levelorder_traversal_queue()
