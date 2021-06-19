@@ -54,6 +54,14 @@ class BinaryTree:
                 print(node._val, end=' ')
                 queue.enqueue(node._left)
                 queue.enqueue(node._right)
+    
+    def node_count(self, node):
+        c = 0
+        if node:
+            c += 1
+            c += self.node_count(node._left)
+            c += self.node_count(node._right)
+        return c 
 
 
 """
@@ -88,6 +96,8 @@ print('\nLevelorder traversal')
 bt.levelorder_traversal([bt._root])
 print('\nLevelorder traversal queue')
 bt.levelorder_traversal_queue()
+print('\nNode count: ')
+print(bt.node_count(bt._root))
 
 
 """
@@ -119,3 +129,5 @@ print('\nLevelorder traversal')
 bt_.levelorder_traversal([bt_._root])
 print('\nLevelorder traversal queue')
 bt_.levelorder_traversal_queue()
+print('\nNode count: ')
+print(bt_.node_count(bt_._root))
