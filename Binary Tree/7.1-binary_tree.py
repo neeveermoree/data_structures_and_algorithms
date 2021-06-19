@@ -23,6 +23,12 @@ class BinaryTree:
             print(node._val, end=' ')
             self.inorder_traversal(node._right)
             
+    def postorder_traversal(self, node):
+        if node:
+            self.postorder_traversal(node._left)
+            self.postorder_traversal(node._right)
+            print(node._val, end=' ')
+
 
 """
     Tree structure:
@@ -50,3 +56,5 @@ print('Preorder traversal')
 bt.preorder_traversal(bt._root)
 print('\nInorder traversal')
 bt.inorder_traversal(bt._root)
+print('\nPostorder traversal')
+bt.postorder_traversal(bt._root)
