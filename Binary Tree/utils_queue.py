@@ -41,16 +41,3 @@ class Queue:
         self._first = self._first._next_node
         self._length -= 1
         return value
-
-
-queue = Queue()
-queue.first()
-queue.enqueue(23)
-print(queue.first())
-queue.enqueue(24)
-print(queue.first())
-print(len(queue))
-print(queue.dequeue())
-print(len(queue))
-print(queue.dequeue())
-queue.first()
