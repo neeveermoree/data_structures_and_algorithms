@@ -28,6 +28,18 @@ class BinaryTree:
             self.postorder_traversal(node._left)
             self.postorder_traversal(node._right)
             print(node._val, end=' ')
+    
+    def levelorder_traversal(self, node_list):
+        if not len(node_list):
+            return
+        new_node_list = []
+        for node in node_list:
+            if not node:
+                continue
+            print(node._val, end=' ')
+            new_node_list.append(node._left)
+            new_node_list.append(node._right)
+        self.levelorder_traversal(new_node_list)
 
 
 """
@@ -58,6 +70,8 @@ print('\nInorder traversal')
 bt.inorder_traversal(bt._root)
 print('\nPostorder traversal')
 bt.postorder_traversal(bt._root)
+print('\nLevelorder traversal')
+bt.levelorder_traversal([bt._root])
 
 
 """
@@ -85,3 +99,5 @@ print('\nInorder traversal')
 bt_.inorder_traversal(bt_._root)
 print('\nPostorder traversal')
 bt_.postorder_traversal(bt_._root)
+print('\nLevelorder traversal')
+bt_.levelorder_traversal([bt_._root])
