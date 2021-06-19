@@ -62,6 +62,16 @@ class BinaryTree:
             c += self.node_count(node._left)
             c += self.node_count(node._right)
         return c 
+    
+    def level(self, node):
+        if node:
+            left_height = self.level(node._left)
+            right_height = self.level(node._right)
+            return max(left_height, right_height) + 1
+        return 0
+
+    def height(self, node):
+        return self.level(node) - 1
 
 
 """
@@ -98,6 +108,8 @@ print('\nLevelorder traversal queue')
 bt.levelorder_traversal_queue()
 print('\nNode count: ')
 print(bt.node_count(bt._root))
+print('Height: ')
+print(bt.height(bt._root))
 
 
 """
@@ -131,3 +143,5 @@ print('\nLevelorder traversal queue')
 bt_.levelorder_traversal_queue()
 print('\nNode count: ')
 print(bt_.node_count(bt_._root))
+print('Height: ')
+print(bt_.height(bt_._root))
