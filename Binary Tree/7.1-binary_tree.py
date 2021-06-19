@@ -58,3 +58,30 @@ print('\nInorder traversal')
 bt.inorder_traversal(bt._root)
 print('\nPostorder traversal')
 bt.postorder_traversal(bt._root)
+
+
+"""
+    Another tree structure
+                                1
+
+                    2                       3
+
+            4                                           6
+"""
+
+node_4 = _Node(4)
+node_2 = _Node(2, left=node_4)
+
+node_6 = _Node(6)
+node_3 = _Node(3, right=node_6)
+
+node_1 = _Node(1, node_2, node_3)
+
+bt_ = BinaryTree(node_1)
+
+print('\nPreorder traversal')
+bt_.preorder_traversal(bt_._root)
+print('\nInorder traversal')
+bt_.inorder_traversal(bt_._root)
+print('\nPostorder traversal')
+bt_.postorder_traversal(bt_._root)
