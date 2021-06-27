@@ -21,6 +21,16 @@ class BinarySearchTree:
             else:
                 node = node._right
         return False        
+    
+    def search_recursive(self, node, val):
+        if not node:
+            return False
+        if node._val == val:
+            return True
+        elif val < node._val:
+            return self.search_recursive(node._left, val)
+        else:
+            return self.search_recursive(node._right, val)
 
 
 """
@@ -45,7 +55,14 @@ node5 = _Node(5, node3, node8)
 
 bt1 = BinarySearchTree(node5)
 
+print('Iterative Search:')
 print(bt1.search_iterative(1))
 print(bt1.search_iterative(5))
 print(bt1.search_iterative(8))
 print(bt1.search_iterative(2))
+
+print('\nRecursive Search:')
+print(bt1.search_recursive(bt1._root, 1))
+print(bt1.search_recursive(bt1._root, 5))
+print(bt1.search_recursive(bt1._root, 8))
+print(bt1.search_recursive(bt1._root, 2))
