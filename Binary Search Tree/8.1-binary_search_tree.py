@@ -1,3 +1,6 @@
+from copy import deepcopy
+
+
 class _Node:
     __slots__ = '_val', '_left', '_right'
     def __init__(self, val, left=None, right=None):
@@ -57,7 +60,20 @@ class BinarySearchTree:
                 else:
                     node._left = new_node
                     return
-
+ 
+    def insert_recursive(self, node, val):
+        if node:
+            if node._val <= val:
+                if not node._right:
+                    node._right = _Node(val)
+                else:
+                    self.insert_recursive(node._right, val)
+            else:
+                if not node._left:
+                    node._left = _Node(val)
+                else:
+                    self.insert_recursive(node._left, val)
+        
 
 """
     Tree structure:
@@ -93,6 +109,8 @@ print(bt1.search_recursive(bt1._root, 5))
 print(bt1.search_recursive(bt1._root, 8))
 print(bt1.search_recursive(bt1._root, 2))
 
+bt2 = deepcopy(bt1)
+
 print('\nInorder Traversal')
 bt1.inorder_traversal(bt1._root)
 print()
@@ -109,3 +127,17 @@ bt1.inorder_traversal(bt1._root)
 print()
 bt1.insert_iterative(2)
 bt1.inorder_traversal(bt1._root)
+
+print('\n\nRecursive Insertion')
+bt2.insert_recursive(bt2._root, 10)
+bt2.inorder_traversal(bt2._root)
+print()
+bt2.insert_recursive(bt2._root, 7)
+bt2.inorder_traversal(bt2._root)
+print()
+bt2.insert_recursive(bt2._root, 0)
+bt2.inorder_traversal(bt2._root)
+print()
+bt2.insert_recursive(bt2._root, 2)
+bt2.inorder_traversal(bt2._root)
+print()
