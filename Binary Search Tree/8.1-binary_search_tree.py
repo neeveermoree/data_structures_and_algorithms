@@ -74,6 +74,27 @@ class BinarySearchTree:
                 else:
                     self.insert_recursive(node._left, val)
         
+    def preorder_traversal(self, node):
+        if node:
+            print(node._val, end='')
+            self.preorder_traversal(node._left)
+            self.preorder_traversal(node._right)
+    
+    def postorder_traversal(self, node):
+        if node:
+            self.postorder_traversal(node._left)
+            self.postorder_traversal(node._right)
+            print(node._val, end='')
+    
+    def levelorder_traversal(self, nodes):
+        while len(nodes):
+            node = nodes.pop(0)
+            print(node._val, end=' -> ')
+            if node._left:
+                nodes.append(node._left)
+            if node._right:
+                nodes.append(node._right)
+            
 
 """
     Tree structure:
@@ -113,6 +134,18 @@ bt2 = deepcopy(bt1)
 
 print('\nInorder Traversal')
 bt1.inorder_traversal(bt1._root)
+print()
+
+print('\nPreorder Traversal')
+bt1.preorder_traversal(bt1._root)
+print() 
+
+print('\nPostorder Traversal')
+bt1.postorder_traversal(bt1._root)
+print()
+
+print('\nLevelorder Traversal')
+bt1.levelorder_traversal([bt1._root])
 print()
 
 print('\nIterative Insertion')
