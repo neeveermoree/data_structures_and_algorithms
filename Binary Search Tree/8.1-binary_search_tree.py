@@ -94,7 +94,31 @@ class BinarySearchTree:
                 nodes.append(node._left)
             if node._right:
                 nodes.append(node._right)
-            
+    
+    def delete(self, val):
+        left = True
+        prev_node = self._root
+        node = self._root
+        while node._val != val:
+            prev_node = node
+            if node._val == val:
+                return node
+            elif node._val > val:
+                node = node._left
+            else:
+                node = node._right
+        if not node:
+            print('No such element in Binary Search Tree')    
+            return
+        if not node._left and not node._right:
+            # remove just the node 
+            pass
+        elif node._left and node._right:
+            # find right node to replace deleted node
+            pass
+        else:
+            # something
+            pass
 
 """
     Tree structure:
@@ -174,3 +198,6 @@ print()
 bt2.insert_recursive(bt2._root, 2)
 bt2.inorder_traversal(bt2._root)
 print()
+
+print('\n\nDelete')
+bt1.delete(4)
