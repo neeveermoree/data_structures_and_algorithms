@@ -61,6 +61,24 @@ class Graph:
             else:
                 print()
 
+    def _connected_with(self, v):
+        connected = []
+        for i in range(self._n_verticies):
+            if self._adj_matrix[v][i]:
+                connected.append(i)
+        return connected
+    
+    def breadth_first_search(self, bfs=None):
+        if not bfs:
+            bfs = self.get_verticies()[0:1]
+        traversal = []
+        while bfs:
+            v = bfs.pop(0)
+            connected = self._connected_with(v)
+            bfs = list(set(bfs).union(set(connected)))
+            traversal.append(v)
+        return traversal
+        
 
 g = Graph(3)
 print(g.count_vertiticies())
@@ -92,3 +110,5 @@ print(g.edge_exist(1, 1))
 
 print(g.outdegree(0))
 print(g.indegree(2))
+
+print(g.breadth_first_search())
